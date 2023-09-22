@@ -1,0 +1,3 @@
+/bazel-*
+/tests/bazel-*
+MODULE.bazel.lock

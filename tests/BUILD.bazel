@@ -1,0 +1,7 @@
+sh_binary(
+    name = "run_buildozer",
+    env = {
+        "MSYS2_ARG_CONV_EXCL": "*",
+    },
+    srcs = ["run_buildozer.sh"],
+)

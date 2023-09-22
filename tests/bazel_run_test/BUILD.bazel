@@ -1,0 +1,5 @@
+sh_test(
+    name = "bazel_run_test",
+    srcs = ["bazel_run_test.sh"],
+    env = {"SHOULD_PASS": "0"},
+)
