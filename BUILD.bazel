@@ -7,10 +7,14 @@ sh_binary(
     env = {
         "BUILDOZER_RLOCATIONPATH": "$(rlocationpath @buildozer_binary//:buildozer.exe)",
     },
-    visibility = ["//visibility:public"],
     deps = [
         "@bazel_tools//tools/bash/runfiles",
     ],
 )
 
-exports_files(["buildozer_binary.bzl"])
+exports_files(["buildozer.bzl"])
+
+exports_files(
+    ["MODULE.bazel"],
+    visibility = ["//tests:__subpackages__"],
+)

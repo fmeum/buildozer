@@ -15,3 +15,5 @@ buildozer_binary.buildozer(
     },
 )
 use_repo(buildozer_binary, "buildozer_binary")
+
+bazel_dep(name = "platforms", version = "0.0.7", dev_dependency = True)
