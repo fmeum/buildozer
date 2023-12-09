@@ -8,6 +8,16 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
+  root_module:
+    name: Root module
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Test
+        run: bazel test //...
+
   test_module:
     name: BCR test module
     runs-on: ${{ matrix.os }}
@@ -22,7 +32,7 @@ jobs:
       - name: Test
         env:
           USE_BAZEL_VERSION: ${{ matrix.bazel }}
-        working-directory: tests
+        working-directory: tests/bcr
         run: |
           bazel run //:run_buildozer
           bazel test //...

@@ -1,7 +1,7 @@
 bazel_dep(name = "buildozer", version = "")
 local_path_override(
     module_name = "buildozer",
-    path = "..",
+    path = "../..",
 )
 
 repo_ext = use_extension("//:deps.bzl", "repo_ext")

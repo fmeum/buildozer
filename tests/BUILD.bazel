@@ -1,7 +1,16 @@
-sh_binary(
-    name = "run_buildozer",
+sh_test(
+    name = "no_deps_test",
+    srcs = ["no_deps_test.sh"],
+    data = [
+        "//:MODULE.bazel",
+        "@buildozer_binary//:buildozer.exe",
+    ],
     env = {
-        "MSYS2_ARG_CONV_EXCL": "*",
+        "BUILDOZER": "$(rootpath @buildozer_binary//:buildozer.exe)",
     },
-    srcs = ["run_buildozer.sh"],
+    target_compatible_with = select({
+        "@platforms//os:linux": [],
+        "@platforms//os:macos": [],
+        "//conditions:default": ["@platforms//:incompatible"],
+    }),
 )
