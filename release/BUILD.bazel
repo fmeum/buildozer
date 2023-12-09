@@ -2,8 +2,3 @@ sh_binary(
     name = "update",
     srcs = ["update.sh"],
 )
-
-sh_binary(
-    name = "release",
-    srcs = ["release.sh"],
-)
