@@ -1,6 +1,6 @@
 module(
     name = "buildozer",
-    version = "6.4.0",
+    version = "0.0.0",
     bazel_compatibility = [">=6.2.0"],
 )
 
@@ -13,6 +13,7 @@ buildozer_binary.buildozer(
         "linux-arm64": "6559558fded658c8fa7432a9d011f7c4dcbac6b738feae73d2d5c352e5f605fa",
         "windows-amd64": "e7f05bf847f7c3689dd28926460ce6e1097ae97380ac8e6ae7147b7b706ba19b",
     },
+    version = "6.4.0",
 )
 use_repo(buildozer_binary, "buildozer_binary")
 

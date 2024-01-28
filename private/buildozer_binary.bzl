@@ -61,6 +61,7 @@ _buildozer_binary_repo = repository_rule(
 _buildozer_tag_class = tag_class(
     attrs = {
         "sha256": attr.string_dict(),
+        "version": attr.string(),
     },
 )
 
@@ -71,7 +72,7 @@ def _buildozer_binary_impl(module_ctx):
             if mod.name != "buildozer":
                 fail("The buildozer tag is currently reserved for internal use only")
             buildozer_attrs["sha256"] = tag.sha256
-            buildozer_attrs["version"] = mod.version
+            buildozer_attrs["version"] = tag.version
 
     if not buildozer_attrs:
         fail("No buildozer tag found")
