@@ -1,56 +1,44 @@
-load("@local_config_platform//:constraints.bzl", "HOST_CONSTRAINTS")
-
 visibility("//")
 
-def _get_buildozer_os():
-    constraint_os = [
-        c[len("@platforms//os:"):]
-        for c in HOST_CONSTRAINTS
-        if c.startswith("@platforms//os:")
-    ]
-    if not constraint_os:
-        fail("No OS constraint in " + repr(HOST_CONSTRAINTS))
-    constraint_os = constraint_os[0]
-    if constraint_os == "osx":
+def _get_buildozer_os(rctx_os):
+    name = rctx_os.name
+    if name.startswith("linux"):
+        return "linux"
+    elif name.startswith("mac os x"):
         return "darwin"
+    elif name.startswith("windows"):
+        return "windows"
     else:
-        return constraint_os
+        fail("Unsupported OS: " + name)
 
-def _get_buildozer_arch():
-    constraint_cpu = [
-        c[len("@platforms//cpu:"):]
-        for c in HOST_CONSTRAINTS
-        if c.startswith("@platforms//cpu:")
-    ]
-    if not constraint_cpu:
-        fail("No CPU constraint in " + repr(HOST_CONSTRAINTS))
-    constraint_cpu = constraint_cpu[0]
-    if constraint_cpu == "x86_64":
+def _get_buildozer_arch(rctx_os):
+    arch = rctx_os.arch
+    if arch == "amd64" or arch == "x86_64" or arch == "x64":
         return "amd64"
-    elif constraint_cpu == "aarch64" or constraint_cpu == "arm64":
+    elif arch == "aarch64":
         return "arm64"
     else:
-        fail("Unsupported CPU: " + constraint_cpu)
-
-_BUILDOZER_URL = "https://github.com/bazelbuild/buildtools/releases/download/v{version}/buildozer-{os_arch}{extension}"
+        fail("Unsupported architecture: " + arch)
 
 def _buildozer_binary_repo_impl(repository_ctx):
     repository_ctx.file("WORKSPACE")
     repository_ctx.file("BUILD.bazel", """exports_files(["buildozer.exe"])""")
 
-    os = _get_buildozer_os()
-    arch = _get_buildozer_arch()
+    os = _get_buildozer_os(repository_ctx.os)
+    arch = _get_buildozer_arch(repository_ctx.os)
     os_arch = os + "-" + arch
     sha256 = repository_ctx.attr.sha256.get(os_arch)
     if not sha256:
         fail("No match for '{os_arch}' in sha256".format(os_arch = os_arch))
 
     repository_ctx.download(
-        url = [_BUILDOZER_URL.format(
-            version = repository_ctx.attr.version,
-            os_arch = os_arch,
-            extension = ".exe" if os == "windows" else "",
-        )],
+        url = [
+            "https://github.com/bazelbuild/buildtools/releases/download/v{version}/buildozer-{os_arch}{extension}".format(
+                version = repository_ctx.attr.version,
+                os_arch = os_arch,
+                extension = ".exe" if os == "windows" else "",
+            ),
+        ],
         sha256 = sha256,
         # Always add the .exe extension, even on non-Windows platforms, so that
         # the file can be referenced via a platform-agnostic label.
@@ -64,6 +52,10 @@ _buildozer_binary_repo = repository_rule(
         "sha256": attr.string_dict(),
         "version": attr.string(),
     },
+    # This rule depends on repository_ctx.os, which can change when alternating
+    # between Bazel binaries build for different architectures (e.g. with
+    # Rosetta).
+    configure = True,
 )
 
 _buildozer_tag_class = tag_class(
