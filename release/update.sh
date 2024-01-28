@@ -13,7 +13,7 @@ cd $BUILD_WORKSPACE_DIRECTORY
 buildozer_cmds_file=$(mktemp)
 trap 'rm -f -- "$buildozer_cmds_file"' EXIT
 
-echo "set version $version|//MODULE.bazel:buildozer" > "$buildozer_cmds_file"
+echo "set version $version|//MODULE.bazel:%buildozer_binary.buildozer" > "$buildozer_cmds_file"
 
 sha256_dict=""
 declare -a os_archs=("darwin-amd64" "darwin-arm64" "linux-amd64" "linux-arm64" "windows-amd64")
