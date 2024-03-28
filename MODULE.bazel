@@ -7,13 +7,13 @@ module(
 buildozer_binary = use_extension("//:buildozer_binary.bzl", "buildozer_binary")
 buildozer_binary.buildozer(
     sha256 = {
-        "darwin-amd64": "d29e347ecd6b5673d72cb1a8de05bf1b06178dd229ff5eb67fad5100c840cc8e",
-        "darwin-arm64": "9b9e71bdbec5e7223871e913b65d12f6d8fa026684daf991f00e52ed36a6978d",
-        "linux-amd64": "8dfd6345da4e9042daa738d7fdf34f699c5dfce4632f7207956fceedd8494119",
-        "linux-arm64": "6559558fded658c8fa7432a9d011f7c4dcbac6b738feae73d2d5c352e5f605fa",
-        "windows-amd64": "e7f05bf847f7c3689dd28926460ce6e1097ae97380ac8e6ae7147b7b706ba19b",
+        "darwin-amd64": "d2688d3b4b0ee5c6f14d30201cdbefa91d9dcaeb6066734bc3ff3739f0d27ee2",
+        "darwin-arm64": "07b48894c7ec4f144df90d19b2a7eccd8dd70268e5c3fdf23967529b4e10dfa2",
+        "linux-amd64": "d043fa1ca7822832dcb157e2b3a8cd24a21e7aeafb2b4501c28908ac6f8be561",
+        "linux-arm64": "655d3b268f42b7370dc82f22b5c36974409ff2032d18ac94d8b1d56583ef896d",
+        "windows-amd64": "0665eb97b10d78ff80d06c8df51a4b6e8484be79716687cecb96a89f3a535b30",
     },
-    version = "6.4.0",
+    version = "7.1.0",
 )
 use_repo(buildozer_binary, "buildozer_binary")
 
