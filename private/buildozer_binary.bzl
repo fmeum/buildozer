@@ -1,3 +1,5 @@
+load("@bazel_features//:features.bzl", "bazel_features")
+
 visibility("//")
 
 def _get_buildozer_os(rctx_os):
@@ -81,6 +83,11 @@ def _buildozer_binary_impl(module_ctx):
         name = "buildozer_binary",
         **buildozer_attrs
     )
+
+    if bazel_features.external_deps.extension_metadata_has_reproducible:
+        return module_ctx.extension_metadata(reproducible = True)
+    else:
+        return None
 
 buildozer_binary = module_extension(
     _buildozer_binary_impl,
