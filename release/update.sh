@@ -36,4 +36,4 @@ echo "dict_set sha256 ${sha256_dict}|//MODULE.bazel:%buildozer_binary.buildozer"
 bazel run @buildozer -- -f "$buildozer_cmds_file"
 
 # Update README.md
-sed -i "s/version = \"[^\"]*\"/version = \"$version\"/" README.md
+sed -i.bak "s/version = \"[^\"]*\"/version = \"$version\"/" README.md && rm README.md.bak
