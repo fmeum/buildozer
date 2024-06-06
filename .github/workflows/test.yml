@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        bazel: [6.2.0, last_rc, last_green]
+        bazel: [6.2.0, 7.2.0rc2, last_green]
 
     steps:
       - uses: actions/checkout@v3
