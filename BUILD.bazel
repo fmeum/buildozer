@@ -10,6 +10,7 @@ sh_binary(
     deps = [
         "@bazel_tools//tools/bash/runfiles",
     ],
+    visibility = ["//visibility:public"],
 )
 
 exports_files(["buildozer.bzl"])
