@@ -66,5 +66,5 @@ use_repo(buildozer_binary, "buildozer_binary")
 def my_impl(repository_or_module_ctx):
     # The ".exe" suffix is *not* a typo. It is present on all platforms to support
     # Windows while maintaining a stable label.
-    buildozer = repository_or_module_ctx.path(Label("@buildozer_binary//:buildozer.exe))
+    buildozer = repository_or_module_ctx.path(Label("@buildozer_binary//:buildozer.exe"))
 ```
