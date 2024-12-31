@@ -1,0 +1,1 @@
+exports_files(["buildozer.template.sh", "buildozer.template.bat"])

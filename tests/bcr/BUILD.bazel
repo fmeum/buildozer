@@ -5,3 +5,8 @@ sh_binary(
     },
     srcs = ["run_buildozer.sh"],
 )
+
+alias(
+    name = "buildozer_alias",
+    actual = "@buildozer",
+)
