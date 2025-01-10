@@ -12,7 +12,6 @@ TAG=${GITHUB_REF_NAME}
 PREFIX="buildozer-${TAG:1}"
 ARCHIVE="buildozer-$TAG.tar.gz"
 git archive --format=tar --prefix=${PREFIX}/ ${TAG} | gzip > $ARCHIVE
-SHA=$(shasum -a 256 $ARCHIVE | awk '{print $1}')
 
 cat << EOF
 ## Using Bzlmod
