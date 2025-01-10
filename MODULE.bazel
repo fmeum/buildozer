@@ -9,14 +9,14 @@ bazel_dep(name = "bazel_features", version = "1.11.0")
 buildozer_binary = use_extension("//:buildozer_binary.bzl", "buildozer_binary")
 buildozer_binary.buildozer(
     sha256 = {
-        "darwin-amd64": "854c9583efc166602276802658cef3f224d60898cfaa60630b33d328db3b0de2",
-        "darwin-arm64": "31b1bfe20d7d5444be217af78f94c5c43799cdf847c6ce69794b7bf3319c5364",
-        "linux-amd64": "3305e287b3fcc68b9a35fd8515ee617452cd4e018f9e6886b6c7cdbcba8710d4",
-        "linux-arm64": "0b5a2a717ac4fc911e1fec8d92af71dbb4fe95b10e5213da0cc3d56cea64a328",
-        "windows-amd64": "58d41ce53257c5594c9bc86d769f580909269f68de114297f46284fbb9023dcf",
-        "linux-s390x": "7e28da8722656e800424989f5cdbc095cb29b2d398d33e6b3d04e0f50bc0bb10",
+        "darwin-amd64": "c921d469ec4396e45ea2df605cd1e3841092e466fdd673820115d155c7e02579",
+        "darwin-arm64": "09c8e3114e36479a7b3f059c23c67322e70f04d7b09511319ea70af9a622fd20",
+        "linux-amd64": "d0a7adf739fa389e0dc87eae5d11ed0a864260308b4887e5fd30a17d9c33ca9b",
+        "linux-arm64": "410d0b1d46a3e044a5d5edb02f24152fd99d58cbddf26fcf802481e0e98bbc2e",
+        "windows-amd64": "d4b571004dee5e34d1aa44a6d7f37102ba4de310163648289dfeb6b468048f58",
+        "linux-s390x": "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
     },
-    version = "7.3.1",
+    version = "8.0.0",
 )
 use_repo(buildozer_binary, "buildozer_binary")
 
