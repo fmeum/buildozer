@@ -22,9 +22,10 @@ jobs:
     name: BCR test module
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        bazel: [6.2.0, last_rc, last_green]
+        bazel: [6.x, 7.x, 8.x, last_green]
 
     steps:
       - uses: actions/checkout@v3
