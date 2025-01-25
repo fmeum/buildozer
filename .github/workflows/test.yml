@@ -35,5 +35,6 @@ jobs:
           USE_BAZEL_VERSION: ${{ matrix.bazel }}
         working-directory: tests/bcr
         run: |
+          bazel run //:buildozer_alias
           bazel run //:run_buildozer
           bazel test //...
