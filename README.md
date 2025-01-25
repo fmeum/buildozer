@@ -4,7 +4,7 @@ This Bazel module provides a pinned, prebuilt version of [buildozer](https://git
 
 ## Requirements
 
-* Bazel 6.2.0 or later
+* Bazel 6.5.0 or later
 
 ## Usage
 
@@ -21,6 +21,8 @@ bazel run @buildozer -- ...
 ```
 
 The `--` is optional if you don't need to pass arguments to buildozer that start with a dash.
+
+You can also create an `alias` for the `@buildozer` target in your main repo.
 
 ## Using buildozer in repository rules and module extensions
 
