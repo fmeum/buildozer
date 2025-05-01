@@ -11,7 +11,7 @@ This Bazel module provides a pinned, prebuilt version of [buildozer](https://git
 1. Add the following line to your `MODULE.bazel` file:
 
 ```starlark
-bazel_dep(name = "buildozer", version = "8.0.3", dev_dependency = True)
+bazel_dep(name = "buildozer", version = "8.2.0", dev_dependency = True)
 ```
 
 2. Run buildozer via `bazel run`:
@@ -31,7 +31,7 @@ You can also use buildozer in a repository rule or module extension, i.e., durin
 1. Add the following line to your `MODULE.bazel` file:
 
 ```starlark
-bazel_dep(name = "buildozer", version = "8.0.3")
+bazel_dep(name = "buildozer", version = "8.2.0")
 ``````
 
 2. In your repository rule or module extension implementation function, get the path to the buildozer binary as follows:
@@ -56,7 +56,7 @@ If you dont want to or can't `load` from `@buildozer`, you can also use the foll
 1. Add the following lines to your `MODULE.bazel` file:
 
 ```starlark
-bazel_dep(name = "buildozer", version = "8.0.3")
+bazel_dep(name = "buildozer", version = "8.2.0")
 
 buildozer_binary = use_extension("@buildozer//:buildozer_binary.bzl", "buildozer_binary")
 use_repo(buildozer_binary, "buildozer_binary")
