@@ -1,3 +1,5 @@
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
+
 # A buildozer binary that will run in the root repository's workspace directory
 # when executed with `bazel run`.
 # Can be aliased or used as a data dependency of other targets executed via
@@ -8,10 +10,10 @@ sh_binary(
     data = [
         "@buildozer_binary//:buildozer.exe",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         "@bazel_tools//tools/bash/runfiles",
     ],
-    visibility = ["//visibility:public"],
 )
 
 exports_files(["buildozer.bzl"])

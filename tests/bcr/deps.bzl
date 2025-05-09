@@ -2,6 +2,7 @@ load("@buildozer//:buildozer.bzl", "BUILDOZER_LABEL")
 
 def _repo_impl(repository_ctx):
     buildozer = repository_ctx.path(BUILDOZER_LABEL)
+
     # Verify the stable buildozer label results in the same path.
     buildozer2 = repository_ctx.path(Label("@buildozer_binary//:buildozer.exe"))
     if buildozer != buildozer2:

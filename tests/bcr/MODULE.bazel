@@ -4,6 +4,8 @@ local_path_override(
     path = "../..",
 )
 
+bazel_dep(name = "rules_shell", version = "0.3.0")
+
 repo_ext = use_extension("//:deps.bzl", "repo_ext")
 use_repo(repo_ext, "repo_rule_repo")
 
