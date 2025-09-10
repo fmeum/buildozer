@@ -9,6 +9,7 @@ def _repo_impl(repository_ctx):
         fail("buildozer != buildozer2: {} != {}".format(buildozer, buildozer2))
     repository_ctx.file("WORKSPACE")
     repository_ctx.file("BUILD.bazel", """
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 sh_test(
     name = "repo_rule_test",
     srcs = ["repo_rule_test.sh"],
