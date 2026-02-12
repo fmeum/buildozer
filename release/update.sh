@@ -26,7 +26,7 @@ do
     fi
     url="https://github.com/bazelbuild/buildtools/releases/download/v${version}/buildozer-${os_arch}${extension}"
     echo "Computing checksum for $url..."
-    sha256=$(curl -sL $url | sha256sum | cut -d' ' -f1)
+    sha256=$(curl -sfL $url | sha256sum | cut -d' ' -f1) || { echo "Error: Failed to download $url" >&2; exit 1; }
     sha256_dict="${sha256_dict:+${sha256_dict} }${os_arch}:${sha256}"
 done
 
