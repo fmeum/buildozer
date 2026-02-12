@@ -16,7 +16,7 @@ trap 'rm -f -- "$buildozer_cmds_file"' EXIT
 echo "set version $version|//MODULE.bazel:%buildozer_binary.buildozer" > "$buildozer_cmds_file"
 
 sha256_dict=""
-declare -a os_archs=("darwin-amd64" "darwin-arm64" "linux-amd64" "linux-arm64" "linux-s390x" "windows-amd64")
+declare -a os_archs=("darwin-amd64" "darwin-arm64" "linux-amd64" "linux-arm64" "linux-s390x" "windows-amd64" "windows-arm64")
 for os_arch in "${os_archs[@]}"
 do
     if [[ "$os_arch" == windows-* ]]; then
