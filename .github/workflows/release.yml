@@ -1,20 +1,24 @@
-# Based on
-# https://github.com/bazel-contrib/rules-template/blob/07fefdbc09d7ca2a49d24220e00dac2efc2bf9b7/.github/workflows/release.yml
-
 # Cut a release whenever a new tag is pushed to the repo.
-# You should use an annotated tag, like `git tag -a v1.2.3`
-# and put the release notes into the commit message for the tag.
 name: Release
-
 on:
   push:
     tags:
       - "v*.*.*"
-
+permissions:
+  id-token: write
+  attestations: write
+  contents: write
 jobs:
   release:
-    permissions: write-all
-    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@v7
+    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@v7.2.2
     with:
       release_files: buildozer-*.tar.gz
       prerelease: false
+      tag_name: ${{ inputs.tag_name || github.ref_name }}
+  publish:
+    needs: release
+    uses: ./.github/workflows/publish.yaml
+    with:
+      tag_name: ${{ inputs.tag_name || github.ref_name }}
+    secrets:
+      publish_token: ${{ secrets.publish_token || secrets.BCR_PUBLISH_TOKEN }}
