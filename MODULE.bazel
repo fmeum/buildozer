@@ -16,6 +16,7 @@ buildozer_binary.buildozer(
         "linux-arm64": "87ee1d2d81d08ccae8f9147fc58503967c85878279e892f2990912412feef1a1",
         "windows-amd64": "e177155c2c8ef41569791de34f13077cefe3e5623f9f02e099347232bc028901",
         "linux-s390x": "0b736803697d74084d81dec4c9b1297be6dd9b6f58fe49951236bfc1852b2499",
+        "windows-arm64": "f6528a676f4bc22a1f92358d3150d9d1ab4fcb19054f55b7e04775d8cdc3e94b",
     },
     version = "8.5.1",
 )
