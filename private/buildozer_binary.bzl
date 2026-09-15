@@ -21,6 +21,8 @@ def _get_buildozer_arch(rctx_os):
         return "arm64"
     elif arch == "s390x" or arch == "s390":
         return "s390x"
+    elif arch == "riscv64":
+        return "riscv64"
     else:
         fail("Unsupported architecture: " + arch)
 
