@@ -1,10 +1,9 @@
 module(
     name = "buildozer",
-    version = "0.0.0",
-    bazel_compatibility = [">=6.2.0"],
+    version = "",
+    bazel_compatibility = [">=7.1.0"],
 )
 
-bazel_dep(name = "bazel_features", version = "1.11.0")
 bazel_dep(name = "rules_shell", version = "0.3.0")
 
 buildozer_binary = use_extension("//:buildozer_binary.bzl", "buildozer_binary")
