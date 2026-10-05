@@ -38,8 +38,6 @@ def _buildozer_binary_repo_impl(repository_ctx):
         executable = True,
     )
     if hasattr(repository_ctx, "repo_metadata"):
-        # Available since Bazel 8.3.0. Makes the repository eligible for the
-        # repo contents cache.
         return repository_ctx.repo_metadata(reproducible = True)
     return None
 
