@@ -4,7 +4,7 @@ This Bazel module provides a pinned, prebuilt version of [buildozer](https://git
 
 ## Requirements
 
-* Bazel 6.5.0 or later
+* Bazel 7.1.0 or later
 
 ## Usage
 
