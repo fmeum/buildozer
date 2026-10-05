@@ -1,6 +1,5 @@
 module(
     name = "buildozer",
-    version = "",
     bazel_compatibility = [">=7.1.0"],
 )
 
